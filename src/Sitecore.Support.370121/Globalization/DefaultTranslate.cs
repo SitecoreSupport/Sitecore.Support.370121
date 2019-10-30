@@ -669,10 +669,8 @@ namespace Sitecore.Support.Globalization
 
             var text = string.Empty;
 
-            lock (this.lockObject)
-            {
-                text = lang[key] as string;
-            }
+            // Don't lock reads on hashtable instances
+            text = lang[key] as string;
 
             if (!string.IsNullOrEmpty(text))
             {
@@ -798,10 +796,8 @@ namespace Sitecore.Support.Globalization
             Assert.ArgumentNotNull(domain, "domain");
             Hashtable hashtable;
 
-            lock (this.lockObject)
-            {
-                hashtable = this.Domains[domain.FullyQualifiedName] as Hashtable;
-            }
+            // Don't lock reads on hashtable instances
+            hashtable = this.Domains[domain.FullyQualifiedName] as Hashtable;
 
             return hashtable ?? new Hashtable();
         }
