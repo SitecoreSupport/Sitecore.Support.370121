@@ -21,7 +21,7 @@ using System.Xml.Linq;
 
 namespace Sitecore.Support.Globalization
 {
-    public class DefaultTranslate : Sitecore.Globalization.DefaultTranslate
+    public class DefaultTranslate : Sitecore.Abstractions.BaseTranslate
     {
         /// <summary>
         /// The lock object.
@@ -53,8 +53,10 @@ namespace Sitecore.Support.Globalization
         /// </summary>
         /// <param name="corePipelineManager">The core pipeline factory.</param>
         /// <param name="log">The logger.</param>
-        public DefaultTranslate(BaseCorePipelineManager corePipelineManager, BaseLog log) : base(corePipelineManager, log)
+        public DefaultTranslate(BaseCorePipelineManager corePipelineManager, BaseLog log)
         {
+            this.corePipelineManager = corePipelineManager;
+            this.log = log;
         }
 
         /// <summary>
